@@ -1,6 +1,9 @@
 FROM e96tech/baseimage
 MAINTAINER Alex Salt <alex.salt@e96.ru>
 
+ENV LANG=en_US.UTF-8
+RUN add-apt-repository -y ppa:ondrej/php5-5.6
+
 # install packages
 RUN apt-get update -qq && apt-get install --no-install-recommends -y \
     php5-cli php5-fpm php5-curl php5-json php5-mysqlnd php5-mcrypt \
