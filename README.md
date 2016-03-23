@@ -7,10 +7,10 @@ HOW TO USE?
 Dockerfile example:
 
 ```
-FROM e96tech/baseimage-php
+FROM e96tech/baseimage-php:php7
 ADD some-service.json /etc/consul/conf.d/
 ADD some-nginx.conf /etc/nginx/sites-enabled/
-ADD pool.conf /etc/php5/fpm/pool.d/
+ADD pool.conf /etc/php/7.0/fpm/pool.d/
 ```
 
 CONSUL
@@ -41,5 +41,5 @@ Example file:
 
 NGINX & PHP-FPM
 ---------------
-- add your fpm pool files to `/etc/php5/fpm/pool.d/`
+- add your fpm pool files to `/etc/php/7.0/fpm/pool.d/`
 - add your nginx vhosts to `/etc/nginx/sites-enabled/`

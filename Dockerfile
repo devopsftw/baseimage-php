@@ -1,18 +1,17 @@
 FROM e96tech/baseimage
 MAINTAINER Alex Salt <alex.salt@e96.ru>
 
-ENV LANG=en_US.UTF-8
-RUN add-apt-repository -y ppa:ondrej/php5-5.6
+ENV LANG en_US.UTF-8
+RUN add-apt-repository -y ppa:ondrej/php
 
 # install packages
 RUN apt-get update -qq && apt-get install --no-install-recommends -y \
-    php5-cli php5-fpm php5-curl php5-json php5-mysqlnd php5-mcrypt \
-    php-apc php5-gd php5-imagick php5-imap php5-memcache php5-xmlrpc \
+    php7.0-cli php7.0-fpm php7.0-curl php7.0-json php7.0-mysql php7.0-mcrypt \
+    php7.0-soap php7.0-mbstring php7.0-xml php7.0-bcmath php7.0-zip \
+    php7.0-imap \
+    php-apcu php-apcu-bc \
     nginx \
     git
-
-# sending flying fists to ubuntu maintainers -.-
-RUN php5enmod mcrypt && php5enmod imap
 
 ADD nginx.sh /etc/service/nginx/run
 ADD php-fpm.sh /etc/service/php-fpm/run
@@ -21,7 +20,7 @@ ADD php-fpm.sh /etc/service/php-fpm/run
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --version=1.0.0-alpha10
 
 # configure php
-ADD php/fpm/ /etc/php5/fpm/
+ADD php/fpm/ /etc/php/7.0/fpm/
 ADD php/php-cli.ini /etc/php5/cli/php.ini
 RUN mkdir /var/log/fpm && chown www-data:www-data /var/log/fpm
 
