@@ -21,7 +21,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 # configure php
 ADD php/fpm/ /etc/php/7.0/fpm/
-ADD php/php-cli.ini /etc/php5/cli/php.ini
+ADD php/php-cli.ini /etc/php/7.0/cli/php.ini
 RUN mkdir /var/log/fpm && chown www-data:www-data /var/log/fpm
 
 # configure nginx
