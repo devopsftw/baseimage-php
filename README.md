@@ -7,7 +7,7 @@ HOW TO USE?
 Dockerfile example:
 
 ```
-FROM e96tech/baseimage-php
+FROM devopsftw/baseimage-php
 ADD some-service.json /etc/consul/conf.d/
 ADD some-nginx.conf /etc/nginx/sites-enabled/
 ADD pool.conf /etc/php5/fpm/pool.d/
