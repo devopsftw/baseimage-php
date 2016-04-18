@@ -17,7 +17,7 @@ ADD nginx.sh /etc/service/nginx/run
 ADD php-fpm.sh /etc/service/php-fpm/run
 
 # install composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --version=1.0.0-alpha10
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --version=1.0.0-beta2
 
 # configure php
 ADD php/fpm/ /etc/php/7.0/fpm/
