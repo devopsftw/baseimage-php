@@ -10,6 +10,7 @@ RUN apt-get update -qq && apt-get install --no-install-recommends -y \
     php7.0-soap php7.0-mbstring php7.0-xml php7.0-bcmath php7.0-zip \
     php7.0-imap \
     php-apcu php-apcu-bc \
+    php-imagemagick php-memcache \
     nginx \
     git
 
