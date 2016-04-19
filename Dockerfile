@@ -1,4 +1,4 @@
-FROM e96tech/baseimage
+FROM devopsftw/baseimage
 MAINTAINER Alex Salt <alex.salt@e96.ru>
 
 ENV LANG en_US.UTF-8
