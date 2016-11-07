@@ -1,7 +1,7 @@
 FROM devopsftw/baseimage:xenial
 MAINTAINER Alex Salt <alex.salt@e96.ru>
 
-ENV LANG=en_US.UTF-8
+ENV LANG en_US.UTF-8
 ENV DEBIAN_FRONTEND noninteractive
 RUN add-apt-repository -y ppa:ondrej/php
 
