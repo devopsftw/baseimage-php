@@ -9,6 +9,7 @@ RUN add-apt-repository -y ppa:ondrej/php
 RUN apt-get update -qq && apt-get install --no-install-recommends -y \
     php5.6-cli php5.6-fpm php5.6-curl php5.6-json php5.6-mysqlnd php5.6-mcrypt \
     php5.6-gd php5.6-imagick php5.6-imap php5.6-memcache php5.6-xmlrpc \
+    php5.6-bcmath \
     php5.6-mbstring php5.6-soap php5.6-xml \
     nginx \
     git
