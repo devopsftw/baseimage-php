@@ -1,4 +1,4 @@
-FROM devopsftw/baseimage
+FROM devopsftw/baseimage:xenial
 MAINTAINER Alex Salt <alex.salt@e96.ru>
 
 ENV LANG en_US.UTF-8
@@ -12,7 +12,11 @@ RUN apt-get update -qq && apt-get install --no-install-recommends -y \
     php-apcu php-apcu-bc \
     php-imagick php-memcache \
     nginx \
-    git
+    git \
+
+    && apt-get clean autoclean \
+    && apt-get autoremove -y \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ADD nginx.sh /etc/service/nginx/run
 ADD php-fpm.sh /etc/service/php-fpm/run
@@ -27,6 +31,3 @@ RUN mkdir /var/log/fpm && chown www-data:www-data /var/log/fpm
 
 # configure nginx
 ADD nginx/ /etc/nginx/
-
-# Clean up APT when done.
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
