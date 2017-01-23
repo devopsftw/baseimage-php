@@ -8,7 +8,7 @@ RUN add-apt-repository -y ppa:ondrej/php
 RUN apt-get update -qq && apt-get install --no-install-recommends -y \
     php7.0-cli php7.0-fpm php7.0-curl php7.0-json php7.0-mysql php7.0-mcrypt \
     php7.0-soap php7.0-mbstring php7.0-xml php7.0-bcmath php7.0-zip \
-    php7.0-imap \
+    php7.0-imap php7.0-intl \
     php-apcu php-apcu-bc \
     php-imagick php-memcache \
     nginx \
