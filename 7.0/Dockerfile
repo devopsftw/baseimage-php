@@ -14,6 +14,7 @@ RUN apt-get update -qq && apt-get install --no-install-recommends -y \
     nginx \
     git \
 
+    && ln -s /etc/php/7.0 /etc/php/current \
     && apt-get clean autoclean \
     && apt-get autoremove -y \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

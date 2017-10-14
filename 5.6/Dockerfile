@@ -14,6 +14,12 @@ RUN apt-get update -qq && apt-get install --no-install-recommends -y \
     nginx \
     git
 
+    && ln -s /etc/php/5.6 /etc/php5 \
+    && ln -s /etc/php/5.6 /etc/php/current \
+    && apt-get clean autoclean \
+    && apt-get autoremove -y \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 ADD nginx.sh /etc/service/nginx/run
 ADD php-fpm.sh /etc/service/php-fpm/run
 
@@ -24,10 +30,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 ADD php/fpm/ /etc/php/5.6/fpm/
 ADD php/php-cli.ini /etc/php/5.6/cli/php.ini
 RUN mkdir /var/log/fpm && chown www-data:www-data /var/log/fpm
-RUN ln -s /etc/php/5.6 /etc/php5
 
 # configure nginx
 ADD nginx/ /etc/nginx/
-
-# Clean up APT when done.
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
