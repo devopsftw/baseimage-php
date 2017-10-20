@@ -12,7 +12,7 @@ RUN apt-get update -qq && apt-get install --no-install-recommends -y \
     php5.6-bcmath php5.6-zip \
     php5.6-mbstring php5.6-soap php5.6-xml \
     nginx \
-    git
+    git \
 
     && ln -s /etc/php/5.6 /etc/php5 \
     && ln -s /etc/php/5.6 /etc/php/current \
