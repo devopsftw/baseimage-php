@@ -1,4 +1,4 @@
-FROM devopsftw/baseimage:0.2.2
+FROM devopsftw/baseimage:0.4.0
 MAINTAINER Alex Salt <alex.salt@e96.ru>
 
 ENV COMPOSER_VERSION 1.5.5
