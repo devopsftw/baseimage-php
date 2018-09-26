@@ -3,6 +3,7 @@ MAINTAINER Alex Salt <alex.salt@e96.ru>
 
 ENV PHP_VERSION 7.2
 ENV COMPOSER_VERSION 1.5.5
+ENV RDKAFKA_VERSION 0.11.5
 RUN LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
 
 # install packages
@@ -22,11 +23,18 @@ RUN apt-get update -qq && apt-get install --no-install-recommends -y \
     php-xdebug \
     php-apcu php-apcu-bc \
     php-imagick php-memcache \
+    php-pear php${PHP_VERSION}-dev build-essential \
     nginx \
     git \
     && phpdismod xdebug \
     && ln -s /etc/php/${PHP_VERSION} /etc/php/current \
-    && ln -s /usr/sbin/php-fpm${PHP_VERSION} /usr/sbin/php-fpm-current
+    && ln -s /usr/sbin/php-fpm${PHP_VERSION} /usr/sbin/php-fpm-current \
+    && curl -Ls https://github.com/edenhill/librdkafka/archive/v${RDKAFKA_VERSION}.tar.gz | tar xzf - \
+    && cd librdkafka-${RDKAFKA_VERSION} \
+    && ./configure && make && make install \
+    && pecl install rdkafka \
+    && echo "extension=rdkafka.so" > /etc/php/${PHP_VERSION}/mods-available/rdkafka.ini \
+    && apt-get remove -y php${PHP_VERISON}-dev php-pear build-essential \
     && apt-get clean autoclean \
     && apt-get autoremove -y \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
